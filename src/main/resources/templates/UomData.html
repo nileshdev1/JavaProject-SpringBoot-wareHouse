@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Welcome To UomData Page</h1>
+<table border="1">
+<tr>
+<td>UOM ID</td>
+<td>UOM TYPE</td>
+<td>UOM MODEL</td>
+<td>DESCRIPTION</td>
+
+<tr th:each="ob: ${list}">
+<td th:text="${ob.uom_Id}"></td>
+<td th:text="${ob.uom_Type}"></td>
+<td th:text="${ob.uom_Model}"></td>
+<td th:text="${ob.description}"></td>
+
+</table>
+</body>
+</html>

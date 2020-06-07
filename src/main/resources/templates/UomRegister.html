@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Welcome To UomRegister Page</h1>
+
+<form action="save" method="post" modelAttribute="uom">
+<pre>
+
+UOM TYPE <select name="uom_Type">
+			<option value="">--SELECT--</option>
+			<option value="packing">PACKING</option>
+			<option value="no-packing">NO-PACKING</option>
+			<option value="na">NA</option>
+</select>
+
+UOM MODEL <input type="text" name="uom_Model">
+
+DESCRIPTION <textarea name="description"></textarea>
+
+<input type="submit" value="Create">
+
+</pre>
+</form>
+<h3 th:text="${msg}"></h3>
+</body>
+</html>
