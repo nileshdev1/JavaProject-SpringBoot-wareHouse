@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Welcome To ShipmentData Page</h1>
+
+<table border="1">
+<tr>
+<td>Shipment ID</td>
+<td>Shipment Mode</td>
+<td>Shipment Code</td>
+<td>Shipment Enable</td>
+<td>Shipment Grade</td>
+<td>Description</td>
+
+<tr th:each ="ob: ${list}">
+<td th:text="${ob.ship_id}"></td>
+<td th:text="${ob.shipment_Mode}"></td>
+<td th:text="${ob.shipment_Code}"></td>
+<td th:text="${ob.enb_Shipment}"></td>
+<td th:text="${ob.shipment_Grade}"></td>
+<td th:text="${ob.discription}"></td>
+
+</tr>
+
+
+</table>
+
+
+</body>
+</html>
