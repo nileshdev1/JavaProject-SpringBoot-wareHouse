@@ -1,20 +1,53 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
 <body>
-<h1>Welcome To UomData Page</h1>
-<table border="1">
-<tr>
-<td>UOM ID</td>
-<td>UOM TYPE</td>
-<td>UOM MODEL</td>
-<td>DESCRIPTION</td>
 
-<tr th:each="ob: ${list}">
-<td th:text="${ob.uom_Id}"></td>
-<td th:text="${ob.uom_Type}"></td>
-<td th:text="${ob.uom_Model}"></td>
-<td th:text="${ob.description}"></td>
+	<div class="container">
 
-</table>
+		<div class="card-header text-white bg-info text-center">
+			<h3>Welcome To UOM Data Page</h3>
+		</div>
+
+		<div class="body">
+			<table class="table table-striped">
+				<tr class="text-center bg-warning">
+					<th>UOM ID</th>
+					<th>UOM TYPE</th>
+					<th>UOM MODEL</th>
+					<th>DESCRIPTION</th>
+					<th colspan="2">OPERATION</th>
+				</tr>
+				<tr class="text-center" th:each="ob: ${list}">
+					<td th:text="${ob.uom_Id}"></td>
+					<td th:text="${ob.uom_Type}"></td>
+					<td th:text="${ob.uom_Model}"></td>
+					<td th:text="${ob.description}"></td>
+					<td><a class="btn btn-danger text-white"
+						th:href="@{/uom/delete/{id}(id=${ob.uom_Id})}">DELETE</a></td>
+					<td><a class="btn btn-info text-white"
+						th:href="@{/uom/edit/{id}(id=${ob.uom_Id})}">EDIT</a></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="card-footer text-white text-center bg-secondary">
+			<span th:text="${msg}"></span>
+		</div>
+
+	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

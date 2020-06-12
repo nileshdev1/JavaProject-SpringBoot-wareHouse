@@ -10,12 +10,24 @@
 <div class="container">
 
 <div class="card-header text-white text-center bg-info">
-	<h3>Welcome To Shipment Register Page</h3>
+	<h3>Welcome To Shipment Edit Page</h3>
 </div>
 
 
 <div class="card-body">
-	<form th:action="@{/shipment/save}" method="post" th:object="${shipmentType}">
+	<form th:action="@{/shipment/update}" method="post" th:object="${shipment}">
+
+<div class="row">
+<div class="col-4 ">
+SHIPMENT ID
+</div>
+
+<div class="col-4 ">
+<input type="hidden" th:field="*{ship_id}" readonly="readonly"/>
+</div>
+
+</div>
+
 
 
 <div class="row">
@@ -92,7 +104,7 @@
 <div class="row">
 
 <div class="col-4 ">
-<label for="shipment_Grade">DESCRIPTION</label>
+<label for="discription">DESCRIPTION</label>
 </div>
 
 <div class="col-4">
@@ -106,8 +118,7 @@
 <div class="row">
 <div class="col-4"></div>
 <div class="col-4 " >
-				<input type="submit" value="Create" class="btn btn-success">
-				<input type="reset" value="Cancel" class="btn btn-danger">
+				<input type="submit" value="Update" class="btn btn-success">
 
 </div>
 </div>

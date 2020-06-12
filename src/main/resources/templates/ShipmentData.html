@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
 <body>
-<h1>Welcome To ShipmentData Page</h1>
 
-<table border="1">
-<tr>
-<td>Shipment ID</td>
-<td>Shipment Mode</td>
-<td>Shipment Code</td>
-<td>Shipment Enable</td>
-<td>Shipment Grade</td>
-<td>Description</td>
+<div class="container">
 
-<tr th:each ="ob: ${list}">
+<div class="card-header text-white bg-info text-center">
+<h3>Welcome To ShipmentData Page</h3>
+</div>
+
+<div class="body">
+<table class="table table-striped">
+<tr class="text-center bg-warning" >
+<th>SHIPMENT ID</th>
+<th>SHIPMENT MODE</th>
+<th>SHIPMENT CODE</th>
+<th>SHIPMENT ENABLE</th>
+<th>SHIPMENT GRADE</th>
+<!-- <th>DESCRIPTION</th> -->
+<th colspan="3">OPERATION</th>
+</tr>
+<tr class="text-center" th:each ="ob: ${list}">
 <td th:text="${ob.ship_id}"></td>
 <td th:text="${ob.shipment_Mode}"></td>
 <td th:text="${ob.shipment_Code}"></td>
 <td th:text="${ob.enb_Shipment}"></td>
 <td th:text="${ob.shipment_Grade}"></td>
-<td th:text="${ob.discription}"></td>
-
+<!-- <td th:text="${ob.discription}"></td> -->
+<td ><a class="btn btn-danger text-white" th:href="@{/shipment/delete/{id}(id=${ob.ship_id})}">DELETE</a></td>
+<td><a class="btn btn-info text-white" th:href="@{/shipment/edit/{id}(id=${ob.ship_id})}">EDIT</a></td>
+<td><a class="btn btn-success text-white" th:href="@{/shipment/view/{id}(id=${ob.ship_id})}">VIEW</a></td>
 </tr>
-
-
 </table>
+</div>
 
+<div class="card-footer text-white text-center bg-secondary">
+<span th:text="${msg}"></span>
+</div>
 
+</div>
 </body>
 </html>

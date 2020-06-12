@@ -8,6 +8,13 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+/*
+ * @Class:   Model/Entity
+ * @Author:  Nil
+ * @Version: 1.0
+ * @UOM
+ */
+
 @Data
 @Entity
 @Table(name="uom_tab")

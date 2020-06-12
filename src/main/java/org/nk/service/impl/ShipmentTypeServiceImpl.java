@@ -9,39 +9,49 @@ import org.nk.service.IShipmentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/*
+ * @Class:  ServiceImpl
+ * @Author:  Nil
+ * @Version: 1.0
+ * @ShipmentType
+ */
+
+
 @Service
 public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 
 	@Autowired
 	private ShipmentRepository repo;
-	
+
+
+
 	@Override
-	public Integer saveShipment(ShipmentType ship) {
-		
+	public Integer saveShipment(ShipmentType ship) {	
 		return repo.save(ship).getShip_id();		
 	}
 
+
 	@Override
 	public void deleteShipment(Integer id) {
-
 		repo.deleteById(id);
 	}
 
+
 	@Override
 	public void updateShipment(ShipmentType ship) {
-
 		repo.save(ship);
 	}
 
-	@Override
-	public ShipmentType getOneShipment(Integer id) {
 
-		return repo.findById(id).get();
+	@Override
+	public Optional<ShipmentType> getOneShipment(Integer id) {
+		Optional<ShipmentType> opt=repo.findById(id);
+		return opt;
 	}
+
 
 	@Override
 	public List<ShipmentType> getAllShipment() {
-
 		return repo.findAll();
 	}
 
