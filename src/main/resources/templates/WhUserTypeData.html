@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+<div class="card">
+
+<div class="card-header bg-info text-center text-white">
+<h3>Welcome To WhUserType Data Page</h3>
+</div>
+
+<div class="body">
+<table class="table table-striped">
+<tr class="text-center bg-warning" >
+<th>USER ID</th>
+<th>USER CODE</th>
+<th>USER TYPE</th>
+<th>USER ID TYPE</th>
+<th>ID NUMBER</th>
+<th colspan="3">OPERATION</th>
+</tr>
+
+<tr class="text-center" th:each="ob:${list}">
+<td th:text="${ob.user_Type_Id}"></td>
+<td th:text="${ob.user_type}"></td>
+<td th:text="${ob.user_Code}"></td>
+<td th:text="${ob.user_id_type}"></td>
+<td th:text="${ob.id_Number}"></td>
+<td><a class="btn btn-danger text-white" th:href="@{/whuser/delete/{id}(id=${ob.user_Type_Id})}">DELETE</a></td>
+<td><a class="btn btn-info text-white" th:href="@{/whuser/edit/{id}(id=${ob.user_Type_Id})}">EDIT</a></td>
+<td><a class="btn btn-success text-white" th:href="@{/whuser/view/{id}(id=${ob.user_Type_Id})}">VIEW</a></td>
+</tr>
+</table>
+</div>
+
+
+
+</div>
+
+
+<div class="card-footer text-center bg-secondary text-white">
+<div class="text-right">
+<a class="text-white text-right" th:href="@{/whuser/excel}"><img th:src="@{/images/excel.png}" width="60" height="40"></a> &nbsp;
+<a class="text-white text-right" th:href="@{/whuser}"><img th:src="@{/images/pdf.jpg}" width="60" height="40" ></a>
+</div>
+<span th:text="${msg}"></span>
+</div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,10 +1,12 @@
 package org.nk.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import org.nk.model.Uom;
 import org.nk.service.IUomService;
+import org.nk.view.UomExcelView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /*
  * @Class:  Controller
@@ -95,5 +98,28 @@ public class UomController {
 		List<Uom> list=service.getAllUom();
 		model.addAttribute("list",list);
 		return "UomData";
+	}
+	
+	@GetMapping("/excel")
+	public ModelAndView exportExcelUom() {
+		
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new UomExcelView());
+		
+		List<Uom> uom=service.getAllUom();
+		mav.addObject("obj", uom);
+		return mav;
+	}
+	
+	@GetMapping("/excel/{id}")
+	public ModelAndView exportExcelUomOne(@PathVariable Integer id) {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new UomExcelView());
+		
+		Optional<Uom> opt=service.getOneUom(id);
+		if(opt.isPresent()) {
+			mav.addObject("obj",Arrays.asList(opt.get()));
+		}
+		return mav;	
 	}
 }

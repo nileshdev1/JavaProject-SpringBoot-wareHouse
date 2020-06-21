@@ -21,21 +21,26 @@
 					<th>UOM MODEL</th>
 					<th>DESCRIPTION</th>
 					<th colspan="2">OPERATION</th>
+					<th colspan="2">EXPORT DATA</th>
 				</tr>
 				<tr class="text-center" th:each="ob: ${list}">
 					<td th:text="${ob.uom_Id}"></td>
 					<td th:text="${ob.uom_Type}"></td>
 					<td th:text="${ob.uom_Model}"></td>
 					<td th:text="${ob.description}"></td>
-					<td><a class="btn btn-danger text-white"
-						th:href="@{/uom/delete/{id}(id=${ob.uom_Id})}">DELETE</a></td>
-					<td><a class="btn btn-info text-white"
-						th:href="@{/uom/edit/{id}(id=${ob.uom_Id})}">EDIT</a></td>
+					<td><a class="btn btn-danger text-white" th:href="@{/uom/delete/{id}(id=${ob.uom_Id})}">DELETE</a></td>
+					<td><a class="btn btn-info text-white" th:href="@{/uom/edit/{id}(id=${ob.uom_Id})}">EDIT</a></td>
+					<td><a class="text-white text-right" th:href="@{/uom/excel/{id}(id=${ob.uom_Id})}"><img th:src="@{/images/excel.png}" width="50" height="40"></a></td>
+					<td><a class="text-white text-right" th:href="@{/whuser}"><img th:src="@{/images/pdf.jpg}" width="50" height="40"></a></td>
 				</tr>
 			</table>
 		</div>
 
 		<div class="card-footer text-white text-center bg-secondary">
+			<div class="text-right">
+				<a class="text-white text-right" th:href="@{/uom/excel}"><img th:src="@{/images/excel.png}" width="60" height="40"></a> &nbsp;
+				<a class="text-white text-right" th:href="@{/whuser}"><img th:src="@{/images/pdf.jpg}" width="60" height="40"></a>
+			</div>
 			<span th:text="${msg}"></span>
 		</div>
 

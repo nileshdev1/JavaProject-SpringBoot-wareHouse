@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+
+<div class="card-header text-white bg-info text-center">
+<h3>Welcome To ORDER METHOD Data Page</h3>
+</div>
+
+<div class="body">
+<table class="table table-striped">
+<tr class="text-center bg-warning" >
+<th>ORDER METHOD ID</th>
+<th>ORDER MODE</th>
+<th>ORDER METHOD CODE</th>
+<th>DESCRIPTION</th>
+<th colspan="3">OPERATION</th>
+</tr>
+<tr class="text-center" th:each ="ob: ${list}">
+<td th:text="${ob.order_Method_Id}"></td>
+<td th:text="${ob.order_Mode}"></td>
+<td th:text="${ob.order_Code}"></td>
+<td th:text="${ob.description}"></td>
+<td ><a class="btn btn-danger text-white" th:href="@{/ordermethod/delete/{id}(id=${ob.order_Method_Id})}">DELETE</a></td>
+<td><a class="btn btn-info text-white" th:href="@{/ordermethod/edit/{id}(id=${ob.order_Method_Id})}">EDIT</a></td>
+<td><a class="btn btn-success text-white" th:href="@{/ordermethod/view/{id}(id=${ob.order_Method_Id})}">VIEW</a></td>
+</tr>
+</table>
+</div>
+
+<div class="card-footer text-white text-center bg-secondary">
+<div class="text-right">
+<a class="text-white text-right" th:href="@{/ordermethod/excel}"><img th:src="@{/images/excel.png}" width="60" height="40"></a> &nbsp;
+<a class="text-white text-right" th:href="@{/order}"><img th:src="@{/images/pdf.jpg}" width="60" height="40" ></a>
+</div>
+<span th:text="${msg}"></span>
+</div>
+
+</div>
+</body>
+</html>

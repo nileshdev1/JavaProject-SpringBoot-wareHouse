@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+
+<div class="card-header text-white text-center bg-info" >
+<h3>Welcome To WhUserType View Page </h3>
+</div>
+
+<div class="card-body">
+
+
+<div class="row">
+<div class="col-4 ">
+<label for="user_Code">USER ID</label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.user_Type_Id}"></span>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-4 ">
+<label for="user_type">USER TYPE</label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.user_type}"></span>
+</div>
+</div>
+
+<div class="row">
+<div class="col-4 ">
+<label for="user_Code">USER CODE</label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.user_Code}"></span>
+</div>
+</div>
+
+<div class="row">
+<div class="col-4 ">
+<label for="user_For">USER FOR</label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.user_For}"></span>
+</div>
+</div>
+
+<div class="row">
+<div class="col-4 ">
+<label for="user_Email">USER EMAIL</label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.user_Email}"></span>
+</div>
+</div>
+
+<div class="row">
+<div class="col-4 ">
+<label for="user_Contact">USER CONTACT</label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.user_Contact}"></span>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-4 ">
+<label for="user_id_type">USERID TYPE </label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.user_id_type}"></span></div>
+</div>
+
+
+<div class="row">
+<div class="col-4 ">
+<label for="other_id">IF OTHER</label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.other_id}"></span>
+</div>
+<div class="col-4"></div>
+</div>
+
+
+<div class="row">
+<div class="col-4 ">
+<label for="id_Number">ID NUMBER</label>
+</div>
+<div class="col-4">
+<span th:text="${whuser.id_Number}"></span>
+</div>
+<div class="col-4"></div>
+</div>			
+		
+		
+
+
+
+
+<div class="card-footer bg-secondary text-white text-center">
+<div class="text-right">
+				<a class="text-white text-right" th:href="@{/whuser/excel/{id} (id=${whuser.user_Type_Id})}"><img
+					th:src="@{/images/excel.png}" width="50" height="40"></a> &nbsp;
+				<a class="text-white text-right" th:href="@{/whuser}"><img
+					th:src="@{/images/pdf.jpg}" width="50" height="40"></a>&nbsp;
+			</div>
+</div>
+</div>
+</div>
+</body>
+</html>

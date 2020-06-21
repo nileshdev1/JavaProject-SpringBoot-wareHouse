@@ -22,12 +22,12 @@ public class Uom {
 
 	@Id
 	@GeneratedValue
-	@Column(name="uom_id")
+	@Column(name="uom_id", nullable=false)
 	private Integer uom_Id;
-	@Column(name="uom_type")
+	@Column(name="uom_type", nullable=false)
 	private String uom_Type;
-	@Column(name="uom_model")
+	@Column(name="uom_model", nullable=false)
 	private String uom_Model;
-	@Column(name="uom_desc")
+	@Column(name="uom_desc", nullable=false)
 	private String description;
 }

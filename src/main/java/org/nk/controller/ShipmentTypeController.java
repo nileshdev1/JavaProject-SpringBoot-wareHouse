@@ -1,10 +1,12 @@
 package org.nk.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import org.nk.model.ShipmentType;
 import org.nk.service.IShipmentTypeService;
+import org.nk.view.ShipmentTypeExcelView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /*
  * @Class:  Controller
@@ -104,6 +107,31 @@ public class ShipmentTypeController {
 		ShipmentType ship1=ship.get();
 		model.addAttribute("ship", ship1);
 		return "ShipmentView";
+	}
+	
+	@GetMapping("excel")
+	public ModelAndView exportToExcel() {
+		
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new ShipmentTypeExcelView());
+		
+		List<ShipmentType> list=service.getAllShipment();
+		mav.addObject("obj",list);
+		
+		return mav;
+	}
+	
+	@GetMapping("/excel/{id}")
+	public ModelAndView exportToExcelOne(@PathVariable Integer id) {
+		
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new ShipmentTypeExcelView());
+		
+		Optional<ShipmentType> opt=service.getOneShipment(id);
+		if(opt.isPresent()) {
+			mav.addObject("obj",Arrays.asList(opt.get()));
+		}
+		return mav;
 	}
 	
 }

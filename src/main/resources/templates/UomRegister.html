@@ -4,67 +4,87 @@
 <head>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/uom.js}"></script>
 </head>
 <body>
 
 	<div class="container">
+		<div class="card">
 
-		<div class="card-header bg-info text-white">
-			<h3>Welcome To UomRegister Page</h3>
-		</div>
-
-		<div class="card-body ">
-			<form th:action="@{/uom/save}" method="post" th:object="${uom}">
+			<div class="card-header bg-info text-white">
+				<h3>Welcome To UomRegister Page</h3>
+			</div>
 
 
-				<div class="row">
-					<div class="col-4">
-						<label for="">UOM TYPE</label>
+			<div class="card-body ">
+				<form th:action="@{/uom/save}" id="uom" method="post"
+					th:object="${uom}">
+
+
+					<!-- ROW-1 -->
+					<div class="row">
+						<div class="col-4">
+							<label for="">UOM TYPE</label>
+						</div>
+						<div class="col-4">
+							<select th:field="*{uom_Type}" class="form-control">
+								<option value="">--SELECT--</option>
+								<option value="packing">PACKING</option>
+								<option value="no-packing">NO-PACKING</option>
+								<option value="na">NA</option>
+							</select>
+						</div>
+						<div class="col-4">
+							<span id="uomTypeError"></span>
+						</div>
 					</div>
-					<div class="col-4">
-						<select th:field="*{uom_Type}" class="form-control">
-							<option value="">--SELECT--</option>
-							<option value="packing">PACKING</option>
-							<option value="no-packing">NO-PACKING</option>
-							<option value="na">NA</option>
-						</select>
+
+
+					<!-- ROW-2 -->
+					<div class="row">
+						<div class="col-4">
+							<label for="">UOM MODEL</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{uom_Model}" class="form-control">
+						</div>
+						<div class="col-4">
+							<span id="uomModelError"></span>
+						</div>
 					</div>
-				</div>
 
 
-				<div class="row">
-					<div class="col-4">
-						<label for="">UOM MODEL</label>
+					<!-- ROW-3 -->
+					<div class="row">
+						<div class="col-4">
+							<label for="">DESCRIPTION</label>
+						</div>
+						<div class="col-4">
+							<textarea th:field="*{description}" class="form-control"></textarea>
+						</div>
+						<div class="col-4">
+							<span id="descriptionError"></span>
+						</div>
 					</div>
-					<div class="col-4">
-						<input type="text" th:field="*{uom_Model}" class="form-control">
+
+
+					<div class="row">
+						<div class="col-4"></div>
+						<div class="col-4">
+							<input type="submit" value="Create" class="btn btn-success">
+							<input type="reset" value="Cancel" class="btn btn-danger">
+						</div>
 					</div>
-				</div>
+				</form>
+			</div>
 
 
-				<div class="row">
-					<div class="col-4">
-						<label for="">DESCRIPTION</label>
-					</div>
-					<div class="col-4">
-						<textarea th:field="*{description}" class="form-control"></textarea>
-					</div>
-				</div>
-
-
-				<div class="row">
-					<div class="col-4"></div>
-					<div class="col-4">
-						<input type="submit" value="Create" class="btn btn-success">
-						<input type="reset" value="Cancel" class="btn btn-danger">
-					</div>
-				</div>
-			</form>
-		</div>
-
-
-		<div class="card-footer bg-secondary text-white text-center">
-			<span th:text="${msg}"></span>
+			<div class="card-footer bg-secondary text-white text-center">
+				<span th:text="${msg}"></span>
+			</div>
 		</div>
 	</div>
 </body>
