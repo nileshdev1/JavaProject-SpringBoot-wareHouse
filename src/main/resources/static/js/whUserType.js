@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     
-	$("#userTypeError").hide();
+	  $("#userTypeError").hide();
 	  $("#userCodeError").hide();
 	  $("#userEmailError").hide();
 	  $("#userContectError").hide();
@@ -27,8 +27,8 @@ $(document).ready(function(){
 			 validate_userEmail();
 		  });
 
-		  $("#user_Contect").keyup(function(){
-		     validate_userContect();
+		  $("#user_Contact").keyup(function(){
+			  validate_userContect();
 		  });
 
 		  $("#user_id_type").change(function(){
@@ -65,7 +65,7 @@ $(document).ready(function(){
 			    return userTypeError;
 			  }
 
-		  function validate_userCode(){
+		  function validate_userCode(){``
 			    var val=$("#user_Code").val();
 				var exp=/^[A-Z]{2,8}$/;
 			    if(val==''){
@@ -108,21 +108,16 @@ $(document).ready(function(){
 			  }
 
 		  function validate_userContect(){
-			    var val = $("#user_Contect").val();
-			    var exp = /^[0-9]{10}$/;
-				if(val==''){
+			    var val = $("#user_Contact").val();
+				if(val == ''){
 				   $("#userContectError").show();
 				   $("#userContectError").html("Enter <b>User Contact</b>");
 				   $("#userContectError").css("color","red");
-				   userContactError = false;
-				}else if(!exp.test(val)){
-				   $("#userContectError").show();
-				   $("#userContectError").html("Invaild <b>User Contact</b>");
-				   $("#userContectError").css("color","red");
 				   userContectError = false;
+				
 				}else{
 				   $("#userContectError").hide();
-				   userContactError = true;
+				   userContectError = true;
 				}
 			     return userContectError;
 			  }
@@ -147,20 +142,14 @@ $(document).ready(function(){
 				}
 				return idTypeError;
 			  }
-		  function validate_idNumer(){
+		  function validate_idNumber(){
 			     var val= $("#id_Number").val();
-				 var exp=/^[A-Za-z0-9-._]{4,20}$/;
-				 if(val==''){
+				 if(val == ''){
 				   $("#idNumError").show();
 			 	   $("#idNumError").html("Enter <b>ID Number</b>");
 			  	   $("#idNumError").css("color","red");
-				   idNumError = false;
-				 }else if(!exp.test(val)){
-				   $("#idNumError").show();
-			 	   $("#idNumError").html("Invaild <b>ID Number</b>");
-			  	   $("#idNumError").css("color","red");
-				   idNumError = false;
-
+			  	 idNumError = false;
+				 
 				 }else{
 				   $("#idNumError").hide();
 				   idNumError = true;
@@ -169,7 +158,7 @@ $(document).ready(function(){
 			   }
 
 
-		  $("#whuser").click(function(){
+		  $("#whuser1").submit(function(){
 		       	userTypeError = false;
 				userCodeError = false;
 		        userEmailError = false;
@@ -182,9 +171,9 @@ $(document).ready(function(){
 				validate_userEmail();
 				validate_userContect();
 				validate_userIdType();
-				validate_idNum();
+				validate_idNumber();
 
-				if(userTypeError && userCodeError && userEmailError && userContect
+				if(userTypeError && userCodeError && userContectError
 				   && idTypeError && idNumError)
 				  return true;
 		        else 
@@ -194,4 +183,3 @@ $(document).ready(function(){
 			   
 });
 
-	

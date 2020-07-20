@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<body>
+<div th:insert="fragments/commonui :: userhead "></div>
+<div th:insert="fragments/commonui :: usermenu "></div>
+	<div class="container">
+	<div class="card">
+
+		<div class="card-header text-white text-center" style="background-color: #1E90FF;">
+			<h3>Welcome To Document Page</h3>
+		</div>
+
+		<div class="body">
+			<table class="table table-striped">
+				<tr class="text-center" style="background-color: #32CD32;">
+						<th>FILE ID</th>
+						<th>FILE NAME</th>
+						<th>DOWNLOAD</th>
+					</tr>
+					<tr th:each="ob:${list}" class="text-center">
+						<td th:text="${ob[0]}" /></td>
+						<td th:text="${ob[1]}" /></td>
+						<td><a th:href="@{/document/download/{id}(id=${ob[0]})}">DOWNLOAD</a></td>
+					</tr>
+			</table>
+		</div>
+
+		<div class="card-footer text-white text-center " style="background-color: #7a2048;">
+			<span th:text="${msg}"></span>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

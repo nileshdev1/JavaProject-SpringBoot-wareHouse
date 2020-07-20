@@ -12,4 +12,5 @@ public interface IWhUserTypeService {
 	public void updateWhUserType(WhUserType whuser);
 	public Optional<WhUserType> getOneWhUserType(Integer id);
 	public List<WhUserType> getAllWhUserType();
+	public List<Object[]> getWhUserCount();
 }

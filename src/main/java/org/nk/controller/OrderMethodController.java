@@ -4,9 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.ServletContext;
+
 import org.nk.model.OrderMethod;
 import org.nk.service.IOrderMethodService;
+import org.nk.util.OrderMethodUtil;
 import org.nk.view.OrderMethodExcelView;
+import org.nk.view.OrderMethodPdfView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +27,12 @@ public class OrderMethodController {
 
 	@Autowired
 	private IOrderMethodService service;
+	
+	@Autowired
+	private OrderMethodUtil util;
+	
+	@Autowired
+	private ServletContext context;
 	
 	@GetMapping("/register")
 	public String showRegister(Model model) {
@@ -102,5 +112,38 @@ public class OrderMethodController {
 			mav.addObject("obj",Arrays.asList(opt.get()));
 		}
 		return mav;
+	}
+	
+	@GetMapping("/pdf")
+	public ModelAndView exportToPdf() {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new OrderMethodPdfView());
+		List<OrderMethod> list=service.getAllOrderMethod();
+		mav.addObject("obj",list);
+		
+		return mav;
+	}
+	
+	@GetMapping("/pdf/{id}")
+	public ModelAndView exportPdfOne(@PathVariable Integer id) {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new OrderMethodPdfView());
+		
+		Optional<OrderMethod> opt=service.getOneOrderMethod(id);
+		if(opt.isPresent()) {
+			mav.addObject("obj", Arrays.asList(opt.get()));
+		}
+		return mav;
+	}
+	
+	@GetMapping("/charts")
+	public String generateCharts() {
+		List<Object[]> list=service.getOrderMethodCount();
+		
+		String location=context.getRealPath("/");
+		util.generatePie(location, list);
+		util.generateBar(location, list);
+		
+		return "OrderMethodCharts";
 	}
 }

@@ -42,6 +42,10 @@ public class WhUserTypeServiceImpl implements IWhUserTypeService {
 		return whuser;
 	}
 	
+	@Override
+	public List<Object[]> getWhUserCount() {
+		return repo.getWhUserCount();
+	}
 	
 	
 	

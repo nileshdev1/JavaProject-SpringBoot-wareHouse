@@ -4,9 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.ServletContext;
+
 import org.nk.model.Uom;
 import org.nk.service.IUomService;
+import org.nk.util.UomUtil;
 import org.nk.view.UomExcelView;
+import org.nk.view.UomPdfView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +35,12 @@ public class UomController {
 
 	@Autowired
 	private IUomService service; 
+	
+	@Autowired
+	private ServletContext context;
+	
+	@Autowired
+	private UomUtil util;
 	
 	/*
 	 * Find the RegistrationForm to Generate UOM
@@ -121,5 +131,38 @@ public class UomController {
 			mav.addObject("obj",Arrays.asList(opt.get()));
 		}
 		return mav;	
+	}
+	
+	@GetMapping("/pdf")
+	public ModelAndView exportToPdf() {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new UomPdfView());
+		List<Uom> list=service.getAllUom();
+		mav.addObject("obj",list);
+		
+		return mav;
+	}
+	
+	@GetMapping("/pdf/{id}")
+	public ModelAndView exportPdfOne(@PathVariable Integer id) {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new UomPdfView());
+		
+		Optional<Uom> opt=service.getOneUom(id);
+		if(opt.isPresent()) {
+			mav.addObject("obj", Arrays.asList(opt.get()));
+		}
+		return mav;
+	}
+	
+	@GetMapping("/charts")
+	public String generateCharts() {
+		List<Object[]> list=service.getUomCount();
+		
+		String location=context.getRealPath("/");
+		util.generatePie(location, list);
+		util.generateBar(location, list);
+		
+		return "UomCharts";
 	}
 }

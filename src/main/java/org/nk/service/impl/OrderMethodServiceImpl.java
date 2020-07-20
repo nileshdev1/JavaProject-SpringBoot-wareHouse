@@ -45,5 +45,10 @@ public class OrderMethodServiceImpl implements IOrderMethodService {
 		List<OrderMethod> list=repo.findAll();
 		return list;
 	}
+	
+	@Override
+	public List<Object[]> getOrderMethodCount() {
+		return repo.getOrderMethodCount();
+	}
 
 }

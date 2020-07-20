@@ -2,20 +2,21 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
+
 <body>
+<div th:insert="fragments/commonui :: userhead "></div>
+<div th:insert="fragments/commonui :: usermenu "></div>
 
 	<div class="container">
-
-		<div class="card-header text-white bg-info text-center">
+		<div class="card" >
+		<div class="card-header text-white  text-center" style="background-color: #1E90FF;">
 			<h3>Welcome To UOM Data Page</h3>
 		</div>
 
 		<div class="body">
 			<table class="table table-striped">
-				<tr class="text-center bg-warning">
+				<tr class="text-center " style="background-color: #32CD32;">
 					<th>UOM ID</th>
 					<th>UOM TYPE</th>
 					<th>UOM MODEL</th>
@@ -31,19 +32,19 @@
 					<td><a class="btn btn-danger text-white" th:href="@{/uom/delete/{id}(id=${ob.uom_Id})}">DELETE</a></td>
 					<td><a class="btn btn-info text-white" th:href="@{/uom/edit/{id}(id=${ob.uom_Id})}">EDIT</a></td>
 					<td><a class="text-white text-right" th:href="@{/uom/excel/{id}(id=${ob.uom_Id})}"><img th:src="@{/images/excel.png}" width="50" height="40"></a></td>
-					<td><a class="text-white text-right" th:href="@{/whuser}"><img th:src="@{/images/pdf.jpg}" width="50" height="40"></a></td>
+					<td><a class="text-white text-right" th:href="@{/uom/pdf/{id}(id=${ob.uom_Id})}"><img th:src="@{/images/pdf.jpg}" width="50" height="40"></a></td>
 				</tr>
 			</table>
 		</div>
 
-		<div class="card-footer text-white text-center bg-secondary">
+		<div class="card-footer text-white text-center" style="background-color: #7a2048;">
 			<div class="text-right">
 				<a class="text-white text-right" th:href="@{/uom/excel}"><img th:src="@{/images/excel.png}" width="60" height="40"></a> &nbsp;
-				<a class="text-white text-right" th:href="@{/whuser}"><img th:src="@{/images/pdf.jpg}" width="60" height="40"></a>
+				<a class="text-white text-right" th:href="@{/uom/pdf}"><img th:src="@{/images/pdf.jpg}" width="60" height="40"></a>
 			</div>
 			<span th:text="${msg}"></span>
 		</div>
-
+		</div>
 	</div>
 </body>
 </html>

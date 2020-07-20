@@ -12,4 +12,5 @@ public interface IOrderMethodService {
 	public void updateOrderMethod(OrderMethod order);
 	public Optional<OrderMethod> getOneOrderMethod(Integer id);
 	public List<OrderMethod> getAllOrderMethod();
+	public List<Object[]> getOrderMethodCount();
 }

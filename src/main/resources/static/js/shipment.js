@@ -12,16 +12,16 @@ $(document).ready(function(){
 		var shipGradeError =false;
 		var descError =false;
 
-		$("#shipment_Mode").keyup(function(){
+		$("#shipment_Mode").change(function(){
 			validate_shipMode();
 		});
 		$("#shipment_Code").keyup(function(){
 			validate_shipCode();
 		});
-		$("#enb_shipment").keyup(function(){
+		$("#enb_Shipment").change(function(){
 			validate_enbShip();
 		});
-		$("#shipment_Grade").keyup(function(){
+		$('input[type="radio"][name="shipment_Grade"]').change(function(){
 			validate_shipGrade();
 		});
 		$("#discription").keyup(function(){
@@ -31,7 +31,7 @@ $(document).ready(function(){
 		
 		function validate_shipMode(){
 			var val=$("#shipment_Mode").val();
-			if(val==''){
+			if( val == ''){
 				$("#shipModeError").show();
 				$("#shipModeError").html("Select <b>Shipment Mode</b>");
 				$("#shipModeError").css("color","red");
@@ -61,7 +61,7 @@ $(document).ready(function(){
 
 		function validate_enbShip(){
 			var val=$("#enb_Shipment").val();
-			if(val==''){
+			if(val == ''){
 				$("#enbShipError").show();
 				$("#enbShipError").html("Select <b>Enable Shipment</b>");
 				$("#enbShipError").css("color","red");
@@ -70,7 +70,7 @@ $(document).ready(function(){
 			else{
 				$("#enbShipError").hide();
 				enbShipError =true;
-		}
+		    }
 			return enbShipError;
 		}
 
@@ -105,7 +105,7 @@ $(document).ready(function(){
 		}
 
 
-		$("#shipment").click(function(){
+		$("#shipment").submit(function(){
 			shipModeError =false;
 			shipCodeError= false;
 			enbShipError= false;

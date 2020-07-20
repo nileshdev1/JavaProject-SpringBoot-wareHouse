@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<body>
+
+	<div th:insert="fragments/commonui :: userhead "></div>
+	<div th:insert="fragments/commonui :: usermenu "></div>
+	
+	<div class="container">
+	<div class="card">
+
+		<div class="card-header text-white text-center" style="background-color: #1E90FF;">
+			<h3>Welcome To PurchaseOrder Registration Page</h3>
+		</div>
+
+		<div class="card-body">
+			<form id="porder" th:action="@{/porder/save}" method="post"
+				th:object="${porder}">
+
+
+
+				<div class="row">
+					<div class="col-4 ">
+						<label for="porder_Code">ORDER CODE</label>
+					</div>
+					<div class="col-4">
+						<input type="text" th:field="*{porder_Code}" class="form-control" />
+					</div>
+					<div class="col-4">
+						<span id="orderCodeError"></span>
+					</div>
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-4 ">
+						<label for="reference_No">REFERENCE NO</label>
+					</div>
+					<div class="col-4">
+						<input type="text" th:field="*{reference_No}" class="form-control" />
+					</div>
+					<div class="col-4">
+						<span id="refCodeError"></span>
+					</div>
+				</div>
+				
+				
+				
+
+				<div class="row">
+					<div class="col-4 ">
+						<label for="qty_Check">QUALITY CHECK</label>
+					</div>
+					<div class="col-4">
+						<input type="radio" th:field="*{qty_Check}" value="required">REQUIRED
+						<input type="radio" th:field="*{qty_Check}" value="not_required">NOT REQUIRED
+					</div>
+					<div class="col-4">
+						<span id="qtyCheckError"></span>
+					</div>
+				</div>
+				
+				
+				
+				<div class="row">
+					<div class="col-4 ">
+						<label for="status">DEFAULT STATUS</label>
+					</div>
+					<div class="col-4">
+						<input type="text" th:field="*{status}" th:value="${porder.setStatus('OPEN')}" class="form-control" readOnly="readonly">
+					</div>
+					<div class="col-4"></div>
+				</div>
+
+			
+
+
+				<div class="row">
+					<div class="col-4 ">
+						<label for="description">DESCRIPTION</label>
+					</div>
+					<div class="col-4">
+						<textarea th:field="*{description}" class="form-control"></textarea>
+					</div>
+					<div class="col-4">
+						<span id="desError"></span>
+					</div>
+				</div>
+
+
+				<br>
+				<div class="row">
+					<div class="col-4"></div>
+					<div class="col-4 ">
+						<input type="submit" value="Create" class="btn btn-success">
+						<input type="reset" value="Cancel" class="btn btn-danger">
+
+					</div>
+				</div>
+
+
+			</form>
+			</div>
+			<div class="card-footer text-white text-center" style="background-color: #7a2048;">
+				<span th:text="${msg}"></span>
+		</div>
+	</div>
+	
+</body>
+</html>

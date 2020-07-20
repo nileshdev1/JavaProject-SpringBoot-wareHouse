@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<body>
+<div th:insert="fragments/commonui :: userhead "></div>
+<div th:insert="fragments/commonui :: usermenu "></div>
+	
+	<div class="container">
+	<div class="card">
+		<div class="card-header text-white text-center" style="background-color: #1E90FF;">
+			<h3>Welcome To Part Update Page</h3>
+		</div>
+
+
+		<div class="card-body">
+			<form id="part" th:action="@{/part/update}" method="post" 
+				th:object="${part}">
+		
+				
+				<!-- Row-1 -->
+				<div class="row">
+					<div class="col-3 ">
+						<label for="part_Id">PART ID</label>
+					</div>
+					<div class="col-6">
+						<input type="text" th:field="*{part_Id}"
+							readOnly="readonly" class="form-control" />
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<br>
+
+
+				<!-- Row-2 -->
+				<div class="row">
+					<div class="col-3 ">
+						<label for="part_Code">PART CODE</label>
+					</div>
+					<div class="col-6">
+						<input type="text" th:field="*{part_Code}"
+							class="form-control" />
+					</div>
+					<div class="col-3">
+						<span id="partCodeError"></span>
+					</div>
+				</div>
+				<br>
+
+
+				<!-- Row-3 -->
+				<div class="row">
+					<div class="col-3 ">
+						<label for="">PART DIMENSIONS</label>
+					</div>
+					<div class="col-1 text-center">		
+						<label for="">W</label>
+					</div>
+					<div class="col-1">		
+						<input type="text" th:field="*{part_Wdth}" class="form-control"/>
+					</div>
+					<div class="col-1 text-center">	
+						<label for="">L</label>
+					</div>
+					<div class="col-1">	
+						<input type="text" th:field="*{part_Len}" class="form-control"/>
+					</div>
+					<div class="col-1 text-center">	
+						<label for="">H</label>
+					</div>
+					<div class="col-1">	
+						<input type="text" th:field="*{part_Hgh}" class="form-control"/>
+					</div>
+					<div class="col-3">
+						<span id="partDimError"></span>
+					</div>
+				</div>
+				<br>
+
+
+				<!-- Row-4 -->
+				<div class="row">
+					<div class="col-3 ">
+						<label for="base_Cost">BASE COST</label>
+					</div>
+					<div class="col-6">
+						<input type="text" th:field="*{base_Cost}" class="form-control"/>
+					</div>
+					<div class="col-3">
+						<span id="baseCostError"></span>
+					</div>
+				</div>
+				<br>
+
+
+				<!-- Row-5 -->
+				<div class="row">
+					<div class="col-3 ">
+						<label for="base_Curr">BASE CURRENCY</label>
+					</div>
+					<div class="col-6">
+						<select th:field="*{base_Curr}" class="form-control">
+							<option value="">--SELECT--</option>
+							<option value="INR">INR</option>
+							<option value="USD">USD</option>
+							<option value="AUS">AUS</option>
+							<option value="ERU">ERU</option>
+						</select>
+					</div>
+					<div class="col-4">
+						<span id="baseCurrError"></span>
+					</div>
+				</div>
+				<br>
+				
+				<!-- Row-6 -->
+				<div class="row">
+						<div class="col-3">
+							<label for="">UOM</label>
+						</div>
+						<div class="col-6" >
+							<select th:field="*{uomob.uom_Id}" class="form-control">
+								<option value="">-SELECT-</option>
+								<option th:each="u:${uom}"
+									th:value="${u.key}"
+									th:text="${u.value}"
+								> </option>
+							</select>
+						</div>
+					</div>
+
+
+				<!-- Row-7 -->
+				<div class="row">
+					<div class="col-3 ">
+						<label for="description">DESCRIPTION</label>
+					</div>
+					<div class="col-6">
+						<textarea th:field="*{description}" class="form-control"></textarea>
+					</div>
+					<div class="col-3">
+						<span id="descError"></span>
+					</div>
+				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-4"></div>
+					<div class="col-4 ">
+						<input type="submit" value="Update" class="btn btn-success">
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="card-footer text-center text-white" style="background-color: #7a2048;">
+		</div>
+	</div>
+	</div>
+</body>
+</html>

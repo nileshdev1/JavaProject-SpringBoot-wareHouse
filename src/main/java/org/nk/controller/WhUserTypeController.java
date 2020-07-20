@@ -4,9 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.ServletContext;
+
 import org.nk.model.WhUserType;
 import org.nk.service.IWhUserTypeService;
+import org.nk.util.WhUserTypeUtil;
 import org.nk.view.WhUserTypeExcelView;
+import org.nk.view.WhUserTypePdfView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +27,10 @@ public class WhUserTypeController {
 
 	@Autowired
 	private IWhUserTypeService service;
+	@Autowired
+	private WhUserTypeUtil util;
+	@Autowired
+	private ServletContext context;
 	
 	@GetMapping("/register")
 	public String showRegister(Model model) {
@@ -102,5 +110,38 @@ public class WhUserTypeController {
 			mav.addObject("obj", Arrays.asList(opt.get()));
 		}
 		return mav;
+	}
+	
+	@GetMapping("/pdf")
+	public ModelAndView exportToPdf() {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new WhUserTypePdfView());
+		List<WhUserType> list=service.getAllWhUserType();
+		mav.addObject("obj",list);
+		
+		return mav;
+	}
+	
+	@GetMapping("/pdf/{id}")
+	public ModelAndView exportPdfOne(@PathVariable Integer id) {
+		ModelAndView mav=new ModelAndView();
+		mav.setView(new WhUserTypePdfView());
+		
+		Optional<WhUserType> opt=service.getOneWhUserType(id);
+		if(opt.isPresent()) {
+			mav.addObject("obj", Arrays.asList(opt.get()));
+		}
+		return mav;
+	}
+	
+	@GetMapping("/charts")
+	public String generateCharts() {
+		List<Object[]> list=service.getWhUserCount();
+		
+		String location=context.getRealPath("/");
+		util.generatePie(location, list);
+		util.generateBar(location, list);
+		
+		return "WhUserTypeCharts";
 	}
 }

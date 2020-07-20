@@ -12,13 +12,13 @@ $(document).ready(function(){
     var orderAcceptError= false;
     var descriptionError= false; 
 
-    $('input[type="radio"][name="orderMode"]').change(function(){
+    $('input[type="radio"][name="order_Mode"]').change(function(){
         validate_orderMode();
     });
     $("#order_Code").keyup(function(){
         validate_orderCode();
     });
-    $("#order_Method").keyup(function(){
+    $("#order_Method").change(function(){
         validate_orderMethod();
     });
     $('input[type="checkbox"][name="order_Accept"]').change(function(){
@@ -111,7 +111,7 @@ $(document).ready(function(){
         }
         
 
-    $("#orderMethod").click(function(){
+    $("#orderMethod").submit(function(){
 
         orderModeError= false;
         orderCodeError= false;

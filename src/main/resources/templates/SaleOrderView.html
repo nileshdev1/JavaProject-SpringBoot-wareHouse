@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+
+<body>
+<div th:insert="fragments/commonui :: userhead "></div>
+<div th:insert="fragments/commonui :: usermenu "></div>
+	<div class="container">
+	<div class="card">
+		<div class="card-header text-white text-center " style="background-color: #1E90FF;">
+			<h3>Welcome To SaleOrder View Page</h3>
+		</div>
+			
+		<div class="card-body ">
+		
+			<!-- #1st Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>ORDER ID</label>
+				</div>
+				<div class="col-4 ">
+					<span th:text="${sorder.sorder_Id}"></span>
+				</div>
+			</div>
+
+
+
+			<!-- #2nd Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>ORDER CODE</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${sorder.sorder_Code}"></span>
+				</div>
+			</div>
+
+
+
+			<!-- #3rd Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>REFERENCE NO</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${sorder.reference_No}"></span>
+				</div>
+			</div>
+
+
+
+			<!-- #4th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>STOCK MODE</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${sorder.stock_Mode}"></span>	
+				</div>
+			</div>
+			
+			<!-- #5th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>STOCK SOURCE</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${sorder.stock_Source}"></span>	
+				</div>
+			</div>
+
+
+			<!-- #5th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>DEFAULT STATUS</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${sorder.status}"></span>
+				</div>
+			</div>
+
+
+			<!-- #6th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>DESCRIPTION</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${sorder.description}"></span>
+				</div>
+			</div>
+		
+
+		</div>
+		<div class="card-footer text-center text-white" style="background-color: #7a2048;">
+		<div class="text-right">
+				<a class="text-white text-right" th:href="@{/sorder/excel/{id}(id=${sorder.sorder_Id})}"><img
+					th:src="@{/images/excel.png}" width="50" height="40"></a> &nbsp;
+				<a class="text-white text-right" th:href="@{/sorder/pdf/{id}(id=${sorder.sorder_Id})}"><img
+					th:src="@{/images/pdf.jpg}" width="50" height="40"></a>&nbsp;
+			</div>
+		
+		</div>
+		</div>
+	</div>
+</body>
+</html>

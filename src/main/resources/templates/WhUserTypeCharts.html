@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<body>
+<div th:insert="fragments/commonui :: userhead "></div>
+<div th:insert="fragments/commonui :: usermenu "></div>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-center" style="background-color: #1E90FF;">
+				<h3>WELCOME TO WHUSER TYPE CHARTS</h3>
+			</div>
+
+			<div class="body text-center">
+				<img th:src="@{/whuserA.jpg}" />
+				 <img th:src="@{/whuserB.jpg}"  />
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

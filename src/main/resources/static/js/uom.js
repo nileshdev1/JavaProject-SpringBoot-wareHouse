@@ -8,7 +8,7 @@ $(document).ready(function() {
 			var uomModelError = false;
 			var descriptionError = false;
 
-			$("#uom_Type").keyup(function() {
+			$("#uom_Type").change(function() {
 				validate_uomtype();
 			});
 
@@ -68,7 +68,7 @@ $(document).ready(function() {
 			}
 
 			
-			$("#uom").click(function() {
+			$("#uom").submit(function() {
 				validate_uomtype();
 				validate_uommodel();
 				validate_description();

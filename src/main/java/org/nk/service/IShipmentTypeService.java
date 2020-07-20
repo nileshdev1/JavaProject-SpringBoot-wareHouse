@@ -19,4 +19,5 @@ public interface IShipmentTypeService {
 	public void updateShipment(ShipmentType ship);
 	public Optional<ShipmentType> getOneShipment(Integer id);
 	public List<ShipmentType> getAllShipment();
+	public List<Object[]> getShipmentCount();
 }

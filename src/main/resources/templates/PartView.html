@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+
+<body>
+
+<div th:insert="fragments/commonui :: userhead "></div>
+<div th:insert="fragments/commonui :: usermenu "></div>
+
+	<div class="container">
+	<div class="card">
+		<div class="card-header text-white text-center" style="background-color: #1E90FF;">
+			<h3>Welcome To Part View Page</h3>
+		</div>
+			
+		<div class="card-body ">
+				
+			<!-- #1st Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>PART ID</label>
+				</div>
+				<div class="col-4 ">
+					<span th:text="${part.part_Id}"></span>
+				</div>
+			</div>
+
+
+
+			<!-- #2nd Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>PART CODE</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${part.part_Code}"></span>
+				</div>
+			</div>
+
+
+
+			<!-- #3rd Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>PART WIRDTH</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${part.part_Wdth}"></span>
+				</div>
+			</div>
+
+
+
+			<!-- #4th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>PART LENGTH</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${part.part_Len}"></span>
+				</div>
+			</div>
+
+
+			<!-- #5th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>PART HIGHT</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${part.part_Hgh}"></span>
+				</div>
+			</div>
+		
+			
+			<!-- #6th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>BASE COST</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${part.base_Cost}"></span>
+				</div>
+			</div>
+		
+			
+			<!-- #7th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>BASE CURRENCY</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${part.base_Curr}"></span>
+				</div>
+			</div>
+		
+			
+			<!-- #8th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>UOM</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${part.uomob.uom_Model}"></span>
+				</div>
+			</div>
+
+
+			<!-- #9th Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>DESCRIPTION</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${part.description}"></span>
+				</div>
+			</div>
+		
+
+		</div>
+		<div class="card-footer text-center text-white" style="background-color: #7a2048;">
+		<div class="text-right">
+				<a class="text-white text-right" th:href="@{/part/excel/{id}(id=${part.part_Id})}"><img
+					th:src="@{/images/excel.png}" width="50" height="40"></a> &nbsp;
+				<a class="text-white text-right" th:href="@{/part/pdf/{id}(id=${part.part_Id})}"><img
+					th:src="@{/images/pdf.jpg}" width="50" height="40"></a>&nbsp;
+			</div>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
