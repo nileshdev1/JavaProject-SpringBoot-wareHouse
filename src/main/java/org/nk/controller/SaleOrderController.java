@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.nk.model.SaleOrder;
 import org.nk.service.ISaleOrderService;
+import org.nk.service.IShipmentTypeService;
+import org.nk.service.IWhUserTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +23,24 @@ public class SaleOrderController {
 	@Autowired
 	private ISaleOrderService service;
 	
+	@Autowired
+	private IShipmentTypeService shipmentService;
+	
+	@Autowired
+	private IWhUserTypeService whservice;
+	
+	public void addDropDownUi(Model model) {
+		model.addAttribute("shipmentTypes", shipmentService.getShipmentIdAndCode());
+		model.addAttribute("whUserTypes", whservice.getWhUserTypeIdAndCode("customer"));
+	}
+
+	
 	@GetMapping("/register")
 	public String showRegister(Model model) {
 		model.addAttribute("sorder", new SaleOrder());
+		addDropDownUi(model);
+		System.out.println(whservice.getWhUserTypeIdAndCode("customer"));
+		System.out.println(shipmentService.getShipmentIdAndCode());
 		return "SaleOrderRegister";
 	}
 	
@@ -33,6 +50,7 @@ public class SaleOrderController {
 		String msg="SaleOrder "+id+" Created";
 		model.addAttribute("msg", msg);
 		model.addAttribute("sorder", new SaleOrder());
+		addDropDownUi(model);
 		return "SaleOrderRegister";
 		
 	}
@@ -59,6 +77,7 @@ public class SaleOrderController {
 		Optional<SaleOrder> opt=service.getOneSale(id);
 		SaleOrder sorder=opt.get();
 		model.addAttribute("sorder", sorder);
+		addDropDownUi(model);
 		return "SaleOrderEdit";
 	}
 	

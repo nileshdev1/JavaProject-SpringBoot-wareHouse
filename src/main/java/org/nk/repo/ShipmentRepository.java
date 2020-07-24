@@ -17,4 +17,6 @@ public interface ShipmentRepository extends JpaRepository<ShipmentType, Integer>
 	@Query(" select st.shipment_Mode,count(st.shipment_Mode) from ShipmentType st GROUP BY st.shipment_Mode ")
 	public List<Object[]> getShipmentCount();
 	
+	@Query(" select st.ship_id,st.shipment_Code from ShipmentType st where st.enb_Shipment='yes' ")
+	public List<Object[]> getShipmentIdAndCode();
 }

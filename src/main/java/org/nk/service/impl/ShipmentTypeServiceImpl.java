@@ -1,7 +1,9 @@
 package org.nk.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.nk.model.ShipmentType;
 import org.nk.repo.ShipmentRepository;
@@ -66,6 +68,17 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 	public List<Object[]> getShipmentCount() {
 
 		return repo.getShipmentCount();
+	}
+	
+	@Override
+	public Map<Integer, String> getShipmentIdAndCode() {
+
+		return repo.getShipmentIdAndCode().stream()
+				.collect(Collectors.toMap(
+						ob->Integer.valueOf(ob[0].toString()), 
+						ob->ob[1].toString()
+						)
+						);
 	}
 
 }

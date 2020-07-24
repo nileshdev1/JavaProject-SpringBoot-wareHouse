@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.nk.model.PurchaseOrder;
 import org.nk.service.IPurchaseOrderService;
+import org.nk.service.IShipmentTypeService;
+import org.nk.service.IWhUserTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +23,25 @@ public class PurchaseOrderController {
 	@Autowired
 	private IPurchaseOrderService service;
 	
+	@Autowired
+	private IShipmentTypeService shipmentService;
+	
+	@Autowired
+	private IWhUserTypeService whservice;
+	
+	
+	public void addDropDownUi(Model model) {
+		model.addAttribute("shipmentTypes", shipmentService.getShipmentIdAndCode());
+		model.addAttribute("whUserTypes", whservice.getWhUserTypeIdAndCode("vendor"));
+	}
+	
+	
+	
 	@GetMapping("/register")
 	public String showRegister(Model model) {
 		model.addAttribute("porder", new PurchaseOrder());
+		addDropDownUi(model);
+		
 		return "PurchaseOrderRegister";
 	}
 	
@@ -32,6 +50,7 @@ public class PurchaseOrderController {
 		Integer id=service.savePurchase(porder);
 		String msg="PurchaseOrder "+id+" Created";
 		model.addAttribute("msg", msg);
+		addDropDownUi(model);
 		model.addAttribute("porder", new PurchaseOrder());
 		return "PurchaseOrderRegister";
 		
@@ -59,6 +78,7 @@ public class PurchaseOrderController {
 	public String editPurchaseOrder(@PathVariable Integer id, Model model) {
 		Optional<PurchaseOrder> opt=service.getOnePurchase(id);
 		PurchaseOrder order=opt.get();
+		addDropDownUi(model);
 		model.addAttribute("porder", order);
 		return "PurchaseOrderEdit";
 	}
@@ -75,6 +95,7 @@ public class PurchaseOrderController {
 	public String viewPurchaseOrder(@PathVariable Integer id, Model model) {
 		Optional<PurchaseOrder> opt=service.getOnePurchase(id);
 		PurchaseOrder order=opt.get();
+		addDropDownUi(model);
 		model.addAttribute("porder", order);
 		return "PurchaseOrderView";
 	}

@@ -11,4 +11,6 @@ public interface WhUserTypeRepository extends JpaRepository<WhUserType, Integer>
 	@Query(" select wh.user_type,count(wh.user_type) from WhUserType wh GROUP BY wh.user_type ")
 	public List<Object[]> getWhUserCount();
 
+	@Query(" SELECT WH.user_Type_Id, WH.user_Code FROM WhUserType WH WHERE WH.user_type =:userType ")
+	public List<Object[]> getWhUserTypeIdAndCode(String userType);
 }

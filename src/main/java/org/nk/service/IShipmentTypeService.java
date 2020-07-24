@@ -1,6 +1,7 @@
 package org.nk.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.nk.model.ShipmentType;
@@ -20,4 +21,6 @@ public interface IShipmentTypeService {
 	public Optional<ShipmentType> getOneShipment(Integer id);
 	public List<ShipmentType> getAllShipment();
 	public List<Object[]> getShipmentCount();
+	
+	public Map<Integer,String>  getShipmentIdAndCode();
 }

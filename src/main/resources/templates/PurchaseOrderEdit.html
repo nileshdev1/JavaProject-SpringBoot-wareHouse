@@ -45,6 +45,36 @@
 					</div>
 				</div>
 				
+					<div class="row">
+						<div class="col-4">
+							<label>SHIPMENT CODE</label>
+						</div>
+						<div class="col-4">
+							<select th:field="*{shipmentType.ship_id}" id="shipmentType" class="form-control">
+								<option value="">SELECT</option>
+								<option th:each="ob:${shipmentTypes}" th:value="${ob.key}" th:text="${ob.value}"></option>
+							</select>
+						</div>
+						<div class="col-6">
+							<span id="shipmentTypeError"></span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-4">
+							<label>VENDOR</label>
+						</div>
+						<div class="col-4">
+							<select th:field="*{vender.user_Type_Id}" id="vender" class="form-control">
+								<option value="">SELECT</option>
+								<option th:each="ob:${whUserTypes}" th:value="${ob.key}" th:text="${ob.value}"></option>
+							</select>
+						</div>
+						<div class="col-4">
+							<span id="WhUserTypeError"></span>
+						</div>
+					</div>
+				
 				
 				<div class="row">
 					<div class="col-4 ">
@@ -114,8 +144,8 @@
 
 			</form>
 
-			<div class="card-footer text-white text-center" style="background-color: #7a2048;">
 			</div>
+			<div class="card-footer text-white text-center" style="background-color: #7a2048;">
 		</div>
 	</div>
 	</div>

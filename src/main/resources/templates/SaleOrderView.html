@@ -39,6 +39,28 @@
 					<span th:text="${sorder.sorder_Code}"></span>
 				</div>
 			</div>
+			
+			
+			<!-- #3nd Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>SHIPMENT</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${sorder.shipmentType.shipment_Code}"></span>
+				</div>
+			</div>
+			
+			
+			<!-- #4nd Row -->
+			<div class="row">
+				<div class="col-4 ">
+					<label>CUSTOMER</label>
+				</div>
+				<div class="col-4">
+					<span th:text="${sorder.customer.user_Code}"></span>
+				</div>
+			</div>
 
 
 
